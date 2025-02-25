@@ -1,0 +1,147 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/login",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/Auth/Login",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7173
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/customers/Get",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44369
+        }
+      ],
+      "UpstreamPathTemplate": "/customers",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/customers/Post",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44369
+        }
+      ],
+      "UpstreamPathTemplate": "/savecustomer",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/customers/GetCustomerByEmail",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44369
+        }
+      ],
+      "UpstreamPathTemplate": "/customerbyemail",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/customers/Put",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44369
+        }
+      ],
+      "UpstreamPathTemplate": "/updatecustomer",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/customers/Delete",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44369
+        }
+      ],
+      "UpstreamPathTemplate": "/deletecustomer",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "bank.write" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/accounts/get",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44378
+        }
+      ],
+      "UpstreamPathTemplate": "/accounts",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/accounts/getaccountbyemail",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44378
+        }
+      ],
+      "UpstreamPathTemplate": "/accountdetail",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/accounts/AddMoney",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44378
+        }
+      ],
+      "UpstreamPathTemplate": "/savemoney",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/accounts/WithdrawMoney",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44378
+        }
+      ],
+      "UpstreamPathTemplate": "/withdrawmoney",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/accounts/Delete",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44378
+        }
+      ],
+      "UpstreamPathTemplate": "/DeleteAccount",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": [ "bank.write" ]
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7097"
+  }
+}

@@ -1,3 +1,4 @@
+using APIGetawayAT;
 using AuthAPI;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -5,7 +6,8 @@ using Ocelot.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("ocelot.json");
 
-builder.Services.AddOcelot();
+builder.Services.AddOcelot()
+    .AddDelegatingHandler<CustomExceptionDelegatingHandler>();
 builder.Services.AddJwtAuthentication();
 builder.Services.AddTransient<JwtTokenService>();
 // Add services to the container.
@@ -17,10 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -35,6 +34,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+// Register custom middleware before Ocelot
+app.UseMiddleware<OcelotExceptionMiddleware>();
 app.UseOcelot().Wait();
 
 app.Run();

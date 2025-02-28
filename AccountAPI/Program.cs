@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddServiceDiscovery(o=>o.UseConsul());
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -37,6 +36,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
 

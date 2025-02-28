@@ -2,12 +2,12 @@ using APIGetawayAT;
 using AuthAPI;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Provider.Consul;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("ocelot.json");
 
-builder.Services.AddOcelot()
-    .AddDelegatingHandler<CustomExceptionDelegatingHandler>();
+builder.Services.AddOcelot().AddConsul().AddDelegatingHandler<CustomExceptionDelegatingHandler>();
 builder.Services.AddJwtAuthentication();
 builder.Services.AddTransient<JwtTokenService>();
 // Add services to the container.
